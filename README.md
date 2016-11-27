@@ -1,10 +1,14 @@
 Fault-tolerant-distributed-optimization simulation of local estimates
 
 Assumptions:
+
 1) The distribution where the data is taken from is a gaussian distribution, generated from :
 http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_gaussian_quantiles.html
+
 2) loss function of a point is Euclidean distance from the center of the class, where center is the average of all points in that class
+
 3) The local estimate at t=0 is set as 0 (update rule only tells you how to update the local estimate, but not how to initialize it)
+
 4) gradient = half of the value (obviously that's not right), because I don't know how esle to calculate gradient of a value
 
 Results:
