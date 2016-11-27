@@ -11,6 +11,13 @@ http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_gaussian_
 
 4) gradient = half of the value (obviously that's not right), because I don't know how esle to calculate gradient of a value
 
+
+Things I was unsure of:
+
+1) How to set initial value of local estimate (at t = 0). If I set it to 0, the next local estimate is also 0 (my gradient calculation is also not right. that could change things).
+
+2) How to calculate gradient in update rule for local estimate. From what I understand, this will be the gradient of the loss function, which should be different for each agent. But right now, the loss function for each agent is the same: euclidean distance.
+
 Results:
 Values of individual loss function for each data point for each agent (15 agents, each has 5 data points):
 
