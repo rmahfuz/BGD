@@ -9,6 +9,7 @@ http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_gaussian_
 
 Results:
 Values of individual loss function for each data point for each agent (15 agents, each has 5 data points):
+
 [0    2.405884
 1    0.692434
 2    0.399686
