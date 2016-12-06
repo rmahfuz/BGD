@@ -1,5 +1,17 @@
 Written by Rehana on 12/05/2016 @ 3:57 am
 =======================================================================================================================================================================================================================
+Scenario: Each agent has its own data of the form y = beta*x + W, where beta is an underlying truth to be learnt, and W is the noise.
+
+Each co-operative agent updates its local estimate according to the formula:
+x[t+1] = prev_b + step_size*gradient evaluated at prev_b
+prev_b is the average of all the agent's local estimates at time 't'
+step size is taken as (1/t)
+gradient is different for each agent, as the data is different. The general formula is 
+gradient evaluated at 'b' = sum from i = 1 to cardinality (y_i - b*x_i), where (x_i,y_i) is the ith data point.
+
+The selfish agent's update rule is:
+x[t+1] = x[t] + step size*gradient evaluated at x[t]
+
 Initialization of local estimates: local estimate of agent i at t = 0 = sum(y)/sum(x)
 
 Observation: The selfish agent's gradient (y - beta*x) is very small (about 10^(-16) orders of magnitude lesser than other agents' gradients). This makes sense because:
