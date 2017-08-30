@@ -1,0 +1,13 @@
+Number of data samples (N) = 12
+Number of machines (m) = 12
+Number of batches (k) = 4 
+Step size (eta) = 1
+Dimension of data (d) = 2
+Underlying truth (theta*) = (3, 4)
+Number of byzantine faults to be tolerated (q) = 3
+Number of iterations = 40
+Distribution = normal https://docs.scipy.org/doc/numpy-1.10.1/reference/generated/numpy.random.multivariate_normal.html
+Mean of distribution = (0, 0)
+Standard Deviation of distribution = ((1, 0), (0, 1))
+Algorithm (Standard or Byzantine) = Byzantine
+Verbose = 1
