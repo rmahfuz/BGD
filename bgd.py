@@ -1,4 +1,5 @@
 """Byzantine gradient descent"""
+"""Please run with python3, not python2"""
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -20,6 +21,7 @@ with open ('config.txt', 'r') as config:
 	num_byz = int(lines[6].split('=')[1].strip()) #number of byzantine faults to be tolerated
 	num_iter = int(lines[7].split('=')[1].strip())  #number of iterations
 	verbose = bool(int(lines[12].split('=')[1]))
+	exist_byzantine = bool(int(lines[13].split('=')[1]))
 	if verbose:
 		print("Configuration:")
 		print("")
@@ -39,7 +41,7 @@ def dot_prod(vec1, vec2):
 	return sum_val
 #==================================================================================================		
 class Machine:
-	def __init__(self, data):
+	def __init__(self, data, machine_id):
 		"""Initializes the machine with the data
 		   Accepts data, a list of length 'num_samples/num_machines', containing data samples, each of length 'dimension+1'"""
 		if verbose:
@@ -51,17 +53,21 @@ class Machine:
 					print("%10f|" % round(data[i][j], 3), end = '')
 				print('')
 		self.data = data
+		self.machine_id = machine_id
 	def calc_gradient(self, theta):
 		"""Calculates gradient of all local data samples, given theta
 		   Accepts theta, a list of length 'dimension' 
 		   Returns sum over all local data samples[(y-<w, theta>) * (-w)], list of length 'dimension'"""
-		gradient = [0] * dimension #list to store the gradient of length dimension
-		for val in self.data:
-			w = val[:len(val) - 1] #all elements of the data sample except the last
-			y = val[len(val) - 1] #last element of data sample
-			scalar_val = y - dot_prod(w, theta)
-			for i in range(dimension):
-				gradient[i] += (scalar_val * (-w[i]))
+		if (exist_byzantine == True and self.machine_id == 5 ):
+			gradient = [20] * dimension #malicious values
+		else:
+			gradient = [0] * dimension #list to store the gradient of length dimension
+			for val in self.data:
+				w = val[:len(val) - 1] #all elements of the data sample except the last
+				y = val[len(val) - 1] #last element of data sample
+				scalar_val = y - dot_prod(w, theta)
+				for i in range(dimension):
+					gradient[i] += (scalar_val * (-w[i]))
 		return gradient
 #==================================================================================================		
 class Parameter_server:
@@ -111,7 +117,7 @@ class Parameter_server:
 			#print('samples_per_machine = ', samples_per_machine)
 			new_data = data[samples_per_machine*i : samples_per_machine*(i+1)]
 			print('______________' + '\n' + 'Machine  '+str(i+1)) if verbose else print('', end = '')
-			new_machine = Machine(new_data) #initializing a machine with the data
+			new_machine = Machine(new_data, i) #initializing a machine with the data
 			self.machines.append(new_machine) 
 		print('_________________________________________________________________________________________________________________________________') if verbose else print('', end = '')
 	#--------------------------------------------------------------------------
