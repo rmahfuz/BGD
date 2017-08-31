@@ -1,4 +1,3 @@
-Written by Rehana on 12/05/2016 @ 3:57 am
 =======================================================================================================================================================================================================================
 Scenario: Each agent has its own data of the form y = beta*x + W, where beta is an underlying truth to be learnt, and W is the noise.
 
