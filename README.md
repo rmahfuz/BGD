@@ -20,3 +20,6 @@ The error in the learned value was 15.05 in the SGD case, while the error was on
 Conclusion so far:
 
 In the presence of a byzantine fault, the error in the learned value is reduced by 95% if Byzantine Gradient Descent is used instead of Standard Gradient Descent.
+
+This project is supported by the Center for Science of Information.
+https://www.soihub.org/education/research-teams/team-machine-learning-security/
