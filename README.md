@@ -21,6 +21,6 @@ Conclusion so far:
 
 In the presence of a byzantine fault, the error in the learned value is reduced by 95% if Byzantine Gradient Descent is used instead of Standard Gradient Descent.
 
-This project is supported by the Center for Science of Information.
+This project is supported by the Center for Science of Information, an NSF Science and Technology Center.
 
 https://www.soihub.org/education/research-teams/team-machine-learning-security/
